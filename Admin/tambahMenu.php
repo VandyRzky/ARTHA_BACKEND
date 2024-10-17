@@ -2,7 +2,7 @@
     require '../connection.php';
 
     if (isset($_POST['tambah'])){
-        $namaProduk = $_POST['nama_menu'];
+        $namaProduk = htmlspecialchars($_POST['nama_menu']);
 
         $gambarProduk = $_FILES['foto_menu']['name'];
         $gambarProdukTemp = $_FILES['foto_menu']['tmp_name'];

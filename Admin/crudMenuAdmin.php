@@ -30,6 +30,7 @@ while ($row = mysqli_fetch_assoc($sql)) {
                 <th>Nama</th>
                 <th>Foto</th>
                 <th>Edit</th>
+                <th>Manajemen Detail</th>
                 <th>Hapus</th>
             </tr>
         </thead>
@@ -39,7 +40,16 @@ while ($row = mysqli_fetch_assoc($sql)) {
                 <tr>
                     <td><?php echo $pd['nama_produk']; ?></td>
                     <td><img src="../MenuUploads/<?php echo $pd['foto_produk']?>" alt="Gambar Produk"width="100"></td>
-                    <td>Ini edit</td>
+                    <td>
+                        <a href="editMenu.php?id=<?php echo $pd['id_produk']?>">
+                            <button>Edit</button>
+                        </a>
+                    </td>
+                    <td>
+                        <a href="manajemenDetailProduk.php?id=<?php echo $pd['id_produk']?>">
+                            <button>Detail Produk</button>
+                        </a>
+                    </td>
                     <td>Ini hapus</td>
                 </tr>
             <?php endforeach; ?>

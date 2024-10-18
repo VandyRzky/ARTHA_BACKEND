@@ -1,5 +1,5 @@
 <?php 
-require "../connection.php";
+require "../../connection.php";
 
 $sql = mysqli_query($conn, "SELECT * FROM produk");
 
@@ -19,7 +19,7 @@ while ($row = mysqli_fetch_assoc($sql)) {
 <body>
     <h3>Untuk tambah menu dan lihat menu</h3>
 
-    <a href="tambahMenu.php">
+    <a href="tambahProduk.php">
         <button>
             Tambah
         </button>
@@ -39,13 +39,17 @@ while ($row = mysqli_fetch_assoc($sql)) {
             <?php foreach($produk as $pd): ?>
                 <tr>
                     <td><?php echo $pd['nama_produk']; ?></td>
-                    <td><img src="../MenuUploads/<?php echo $pd['foto_produk']?>" alt="Gambar Produk"width="100"></td>
+                    <td><img src="../../MenuUploads/<?php echo $pd['foto_produk']?>" alt="Gambar Produk"width="100"></td>
                     <td>
-                        <a href="manajemenDetailProduk.php?id_produk=<?php echo $pd['id_produk']?>">
-                            <button>Detail Produk</button>
+                        <a href="manajemenProduk.php?id_produk=<?php echo $pd['id_produk']?>">
+                            <button>Edit</button>
                         </a>
                     </td>
-                    <td>Ini hapus</td>
+                    <td>
+                        <a href="hapusProduk.php?id_produk=<?php echo $pd['id_produk']?>">
+                            <button>Hapus</button>
+                        </a>
+                    </td>
                 </tr>
             <?php endforeach; ?>
         </tbody>

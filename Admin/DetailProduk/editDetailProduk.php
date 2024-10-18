@@ -16,12 +16,12 @@
         if ($stmtUpdate->execute()) {
             echo "<script>
                 alert('Data berhasil diubah!');
-                document.location.href = '../manajemenDetailProduk.php?id_produk=$idProduk';
+                document.location.href = '../Produk/manajemenProduk.php?id_produk=$idProduk';
             </script>";
         } else {
             echo "<script>
                 alert('Data gagal diubah!');
-                document.location.href = '../manajemenDetailProduk.php?id_produk=$idProduk';
+                document.location.href = '../Produk/manajemenProduk.php?id_produk=$idProduk';
             </script>";
         }
     

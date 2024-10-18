@@ -1,5 +1,5 @@
 <?php 
-    require '../connection.php';
+    require '../../connection.php';
     
     $idProduk = $_GET['id_produk'];
     
@@ -33,12 +33,12 @@
         if ($stmt->execute()) {
             echo "<script>
                 alert('Data Berhasil Ditambahkan!');
-                document.location.href = 'crudMenuAdmin.php';
+                document.location.href = '../Produk/manajemenProduk.php?id_produk=$idProduk';
                 </script>";
         } else {
             echo "<script>
                 alert('Data Gagal Ditambahkan!');
-                document.location.href = 'crudMenuAdmin.php';
+                document.location.href = '../Produk/manajemenProduk.php?id_produk=$idProduk';
                 </script>";
         }
 

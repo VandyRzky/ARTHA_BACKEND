@@ -1,5 +1,5 @@
 <?php 
-    require '../connection.php';
+    require '../../connection.php';
 
     $idProduk = $_GET['id_produk'];
 
@@ -32,8 +32,8 @@
             $fileEkstensi = pathinfo($fotoUpload, PATHINFO_EXTENSION);
             $fotoProdukFinal = date('YmsHis').'.'.$fileEkstensi;
 
-            $pathFotoLama = "../MenuUploads/". $fotoLama;
-            $pathFotoBaru = "../MenuUploads/". $fotoProdukFinal;
+            $pathFotoLama = "../../MenuUploads/". $fotoLama;
+            $pathFotoBaru = "../../MenuUploads/". $fotoProdukFinal;
 
             if (file_exists($pathFotoLama)) {
                 unlink($pathFotoLama);
@@ -50,12 +50,12 @@
         if ($stmtUpdate->execute()) {
             echo "<script>
                 alert('Data berhasil diubah!');
-                document.location.href = 'crudMenuAdmin.php';
+                document.location.href = 'readProduk.php';
             </script>";
         } else {
             echo "<script>
                 alert('Data gagal diubah!');
-                document.location.href = 'crudMenuAdmin.php';
+                document.location.href = 'readProduk.php';
             </script>";
         }
     
@@ -75,7 +75,7 @@
 
     <h3>Untuk detail menu</h3>
 
-    <a href="tambahDetailProduk.php?id_produk=<?php echo $idProduk?>">
+    <a href="../DetailProduk/tambahDetailProduk.php?id_produk=<?php echo $idProduk?>">
         <button>Tambah</button>
     </a>
 
@@ -95,12 +95,12 @@
                 <th><?php echo $dP['jumlah'] ?></th>
                 <th><?php echo $dP['harga'] ?></th>
                 <th>
-                    <a href="DetailProduk/editDetailProduk.php?id_detail_produk=<?php echo $dP['id_detail_produk']?>">
+                    <a href="../DetailProduk/editDetailProduk.php?id_detail_produk=<?php echo $dP['id_detail_produk']?>">
                         <button>Edit</button>
                     </a>
                 </th>
                 <th>
-                    <a href="DetailProduk/hapusDetailProduk.php?id_detail_produk=<?php echo $dP['id_detail_produk']?>">
+                    <a href="../DetailProduk/hapusDetailProduk.php?id_detail_produk=<?php echo $dP['id_detail_produk']?>">
                         <button>Hapus</button>
                     </a>
                 </th>
@@ -112,7 +112,7 @@
 
     <h3>Untuk edit menu game</h3>
 
-    <img src="../MenuUploads/<?php echo $data['foto_produk']?>" alt="Foto produk" width="100">
+    <img src="../../MenuUploads/<?php echo $data['foto_produk']?>" alt="Foto produk" width="100">
 
     <form action="" method="post" enctype="multipart/form-data">
         <input type="text" name="nama_produk" id="nama_produk" value="<?php echo $data['nama_produk']?>">

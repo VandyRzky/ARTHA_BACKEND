@@ -1,5 +1,5 @@
 <?php 
-    require '../connection.php';
+    require '../../connection.php';
 
     if (isset($_POST['tambah'])){
         $namaProduk = htmlspecialchars($_POST['nama_menu']);
@@ -10,7 +10,7 @@
         $fileEkstensi = pathinfo($gambarProduk, PATHINFO_EXTENSION);
         $gambarProdukFinal = date('YmsHis').'.'.$fileEkstensi;
 
-        $targetDir = "../MenuUploads/";
+        $targetDir = "../../MenuUploads/";
         $targetUpload = $targetDir . $gambarProdukFinal;
 
         if (move_uploaded_file($gambarProdukTemp, $targetUpload)){
@@ -21,12 +21,12 @@
             if($stmt->execute()){
                 echo "<script>
                 alert('Data Berhasil Ditambahkan!');
-                document.location.href = 'crudMenuAdmin.php';
+                document.location.href = 'readProduk.php';
                 </script>";
             }else{
                 echo "<script>
                 alert('Data Gagal Ditambahkan!');
-                document.location.href = 'crudMenuAdmin.php';
+                document.location.href = 'readProduk.php';
                 </script>";
             }
             $stmt->close();

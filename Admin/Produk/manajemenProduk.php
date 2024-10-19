@@ -1,6 +1,16 @@
 <?php 
     require '../../connection.php';
 
+    session_start();
+    if($_SESSION['role'] !== 'admin'){
+        echo 
+        "<script>
+        alert('Tidak bisa mengakses halaman ini!');
+        document.location.href = '../../Auth/login.php';
+        </script>";
+        exit;
+    }
+
     $idProduk = $_GET['id_produk'];
 
     $sql = "SELECT p.nama_produk, dp.id_detail_produk, dp.jumlah, dp.harga

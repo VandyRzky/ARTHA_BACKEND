@@ -2,6 +2,15 @@
     require '../../connection.php';
     
     $idProduk = $_GET['id_produk'];
+    session_start();
+    if($_SESSION['role'] !== 'admin'){
+        echo 
+        "<script>
+        alert('Tidak bisa mengakses halaman ini!');
+        document.location.href = '../../Auth/login.php';
+        </script>";
+        exit;
+    }
     
     // if (isset($_GET['id_produk'])){
 

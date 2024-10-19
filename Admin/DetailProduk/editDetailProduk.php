@@ -1,6 +1,16 @@
 <?php 
     require '../../connection.php';
 
+    session_start();
+    if($_SESSION['role'] !== 'admin'){
+        echo 
+        "<script>
+        alert('Tidak bisa mengakses halaman ini!');
+        document.location.href = '../../Auth/login.php';
+        </script>";
+        exit;
+    }
+
     $idDetail = $_GET['id_detail_produk'];
     $query = mysqli_query($conn, "SELECT * FROM detail_produk WHERE id_detail_produk = $idDetail");
     $data = mysqli_fetch_assoc($query);

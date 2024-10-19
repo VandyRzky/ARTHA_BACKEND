@@ -1,6 +1,16 @@
 <?php 
 require "../../connection.php";
 
+session_start();
+if($_SESSION['role'] !== 'admin'){
+    echo 
+    "<script>
+    alert('Tidak bisa mengakses halaman ini!');
+    document.location.href = '../../Auth/login.php';
+    </script>";
+    exit;
+}
+
 $sql = mysqli_query($conn, "SELECT * FROM produk");
 
 $produk =[];
@@ -17,6 +27,12 @@ while ($row = mysqli_fetch_assoc($sql)) {
     <title>Document</title>
 </head>
 <body>
+    <h3>Buat log out</h3>
+
+    <a href="../../Auth/logOut.php">
+        <button>Log Out</button>
+    </a>
+
     <h3>Untuk tambah menu dan lihat menu</h3>
 
     <a href="tambahProduk.php">

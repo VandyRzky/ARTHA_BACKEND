@@ -1,6 +1,16 @@
 <?php 
     require '../../connection.php';
 
+    session_start();
+    if($_SESSION['role'] !== 'admin'){
+        echo 
+        "<script>
+        alert('Tidak bisa mengakses halaman ini!');
+        document.location.href = '../../Auth/login.php';
+        </script>";
+        exit;
+}
+
     if (isset($_POST['tambah'])){
         $namaProduk = htmlspecialchars($_POST['nama_menu']);
 
